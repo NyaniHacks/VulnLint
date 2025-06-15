@@ -1,6 +1,6 @@
 # 🔍 VulnLint - Python Security Linter
 
-![VulnLint Logo](/assets/vulnlint-logo.png)
+![VulnLint Logo]([/assets/vulnlint-logo.png](https://raw.githubusercontent.com/NyaniHacks/VulnLint/refs/heads/main/assests/vulnlint-logo.png))
 
 **VulnLint** is a static analysis tool designed to help Python developers detect security vulnerabilities before code reaches production.
 
