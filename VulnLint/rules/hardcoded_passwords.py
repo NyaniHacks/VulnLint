@@ -20,4 +20,5 @@ class HardcodedPasswordRule(VulnLintBaseRule):
                 self.generic_visit(node)
         
         return visitor
+    
 
