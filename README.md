@@ -1,23 +1,25 @@
-# 🔍 VulnLint — Python Security Linter
+# 🔍 VulnLint - Python Security Linter
 
 ![VulnLint Logo](https://via.placeholder.com/150?text=VulnLint)
 
-**VulnLint** is a lightweight static analysis tool that scans Python code for common security flaws before they make it to production.
+**VulnLint** is a static analysis tool designed to help Python developers detect security vulnerabilities before code reaches production.
 
-> 🛡️ Secure your code. Catch vulnerabilities early. Ship with confidence.
+> 🧠 *Think of it as a security-focused linter for your Python codebase.*
 
 ---
 
 ## 🚀 Features
 
-* 🔐 **Hardcoded Secrets Detection** – flags API keys, tokens, and passwords.
-* 🛠️ **Security Misconfig Detection** – scans for weak crypto, dangerous imports, etc.
-* 🧩 **Custom Rules Support** – define your own checks in seconds.
-* ⚙️ **Severity Levels** – control the alert threshold per project.
+* 🔐 Detects **hardcoded credentials**
+* ⚠️ Flags **insecure configurations** and risky imports
+* ⚙️ Supports a **custom rule system**
+* 🧪 Allows **configurable severity levels** per project
 
 ---
 
 ## 📦 Installation
+
+Install directly from GitHub:
 
 ```bash
 pip install git+https://github.com/yourusername/VulnLint.git
@@ -27,47 +29,71 @@ pip install git+https://github.com/yourusername/VulnLint.git
 
 ## 🧪 Usage
 
+### 📁 Scan a directory
+
 ```bash
-vulnlint your_script.py
+vulnlint path/to/your/code
 ```
 
-You’ll get a color-coded summary of issues with line numbers and severity levels.
+### 📄 Scan a single file
 
----
-
-## 🧰 Example Output
-
-```text
-[HIGH] Line 14: Hardcoded password detected.
-[MEDIUM] Line 27: Use of weak cryptography (md5).
+```bash
+vulnlint path/to/file.py
 ```
 
 ---
 
-## 🛠️ Configuration
+## ⚙️ Configuration
 
-Create a `.vulnlint.yml` in your project root to customize rules, severities, or exclusions.
+Create a `.vulnlint.yaml` file to customize rules and severities:
 
 ```yaml
-exclude:
-  - tests/*
-rules:
-  hardcoded_secrets: true
-  weak_crypto: true
+excluded_paths:
+  - tests/
+  - migrations/
+
+severity_levels:
+  CRITICAL: true
+  HIGH: true
+  MEDIUM: false
+  LOW: false
 ```
 
 ---
 
-## 🤝 Contributing
+## 🛠️ Developing New Rules
 
-Contributions are welcome! Fork the repo, create a branch, and submit a pull request.
+Want to extend VulnLint with your own rules?
+
+1. Create a new Python file in `vulnlint/rules/`
+2. Inherit from `VulnLintBaseRule`
+3. Implement the `visitor()` method with your logic
+
+---
+
+## 🧪 Testing the Tool
+
+Create a test file `test.py`:
+
+```python
+# This should trigger VulnLint
+api_key = "12345-abcdef"
+password = "super$ecret"
+```
+
+Run the scanner:
+
+```bash
+vulnlint test.py
+```
+
+You should see alerts for the detected vulnerabilities.
 
 ---
 
 ## 📜 License
 
-[MIT License](LICENSE)
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Would you like help adding badges like [build status](f), [PyPI version](f), or [code quality score](f) to this README?
