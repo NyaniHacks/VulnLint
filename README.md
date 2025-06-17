@@ -22,7 +22,7 @@
 Install directly from GitHub:
 
 ```bash
-pip install https://github.com/NyaniHacks/VulnLint.git
+git clone https://github.com/NyaniHacks/VulnLint.git
 ```
 
 ---
